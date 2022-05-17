@@ -1,6 +1,6 @@
 # Bash-INI-Parser
 ini parser for bash.     用于解析ini配置文件的bash函数
->[中文_简化字 [en_US]()]
+>[中文_简化字 [en_US](https://github.com/LGY07/Bash-INI-Parser/blob/main/README_en_US.md)]
 
 ### 使用方法
 (可忽略`INI_Paser.sh`文件，以此教程为主)
