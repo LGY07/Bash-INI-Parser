@@ -72,7 +72,7 @@ c=6
 `a.sh`
 ```
 #!/bin/bash
-#函数声明
+##函数声明
 INI_Parser() {
 NAME='_'$2
 SECTION_NUM=$(grep "^\\[" $1 | grep "]$" | wc -l)
@@ -98,9 +98,11 @@ do
 done
 #return 0
 }
-#解析a.ini
+
+##解析a.ini
 INI_Parser a.ini ABC
-#输出变量值
+
+##输出变量值
 echo $_ABC_abc1_a $_ABC_abc1_b $_ABC_abc1_c
 echo $_ABC_abc2_a $_ABC_abc2_b $_ABC_abc2_c
 echo $_ABC__SECTIONS
