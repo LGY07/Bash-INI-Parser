@@ -11,7 +11,7 @@ INI_Parser() {
 NAME='_'$2
 SECTION_NUM=$(grep "^\\[" $1 | grep "]$" | wc -l)
 SEC_TIMES=1
-export $NAME'__SECTIONS'=$(grep "^\\[" $1 | grep "]$" | sed "s/^\\[//" | sed "s/]$//")
+export $NAME'__SECTIONS'="$(grep "^\\[" $1 | grep "]$" | sed "s/^\\[//" | sed "s/]$//")"
 while [[ $SEC_TIMES -le $SECTION_NUM ]]
 do
     let SEC_TIMES_ADD=$SEC_TIMES+1
@@ -77,7 +77,7 @@ INI_Parser() {
 NAME='_'$2
 SECTION_NUM=$(grep "^\\[" $1 | grep "]$" | wc -l)
 SEC_TIMES=1
-export $NAME'__SECTIONS'=$(grep "^\\[" $1 | grep "]$" | sed "s/^\\[//" | sed "s/]$//")
+export $NAME'__SECTIONS'="$(grep "^\\[" $1 | grep "]$" | sed "s/^\\[//" | sed "s/]$//")"
 while [[ $SEC_TIMES -le $SECTION_NUM ]]
 do
     let SEC_TIMES_ADD=$SEC_TIMES+1
