@@ -10,6 +10,7 @@ ini parser for bash.     用于解析ini配置文件的bash函数
 INI_Parser() {
 NAME='_'$2
 SECTION_NUM=$(grep "^\\[" $1 | grep "]$" | wc -l)
+export $NAME'__SECNUM'=$(grep "^\\[" $1 | grep "]$" | wc -l)
 SEC_TIMES=1
 export $NAME'__SECTIONS'="$(grep "^\\[" $1 | grep "]$" | sed "s/^\\[//" | sed "s/]$//")"
 while [[ $SEC_TIMES -le $SECTION_NUM ]]
@@ -49,6 +50,8 @@ KEY=1
 
 `_string_SECTION_KEY`:"SECTION"节中的"KEY"键的值，example.ini中的值为"1"
 
+`_string__SECNUM`:节的数量，example.ini中的值为"1"
+
 `_string__SECTIONS`:所有的节的名称(用空格分开)，example.ini中的值为"SECTION"
 
 `_string__SEC1`:第一个节的名称(若需要不同的节的名称，请将"1"替换为对应节的序数)，example.ini中的值为"SECTION"
@@ -76,6 +79,7 @@ c=6
 INI_Parser() {
 NAME='_'$2
 SECTION_NUM=$(grep "^\\[" $1 | grep "]$" | wc -l)
+export $NAME'__SECNUM'=$(grep "^\\[" $1 | grep "]$" | wc -l)
 SEC_TIMES=1
 export $NAME'__SECTIONS'="$(grep "^\\[" $1 | grep "]$" | sed "s/^\\[//" | sed "s/]$//")"
 while [[ $SEC_TIMES -le $SECTION_NUM ]]
@@ -105,6 +109,7 @@ INI_Parser a.ini ABC
 ##输出变量值
 echo $_ABC_abc1_a $_ABC_abc1_b $_ABC_abc1_c
 echo $_ABC_abc2_a $_ABC_abc2_b $_ABC_abc2_c
+echo $_ABC__SECNUM
 echo $_ABC__SECTIONS
 echo $_ABC__SEC1
 echo $_ABC__SEC2
@@ -113,6 +118,7 @@ echo $_ABC__SEC2
 ```
 1 2 3
 4 5 6
+1
 abc1 abc2
 abc1
 abc2
