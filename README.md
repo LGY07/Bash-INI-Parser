@@ -7,7 +7,6 @@ ini parser for bash.     用于解析ini配置文件的bash函数
 #### 1.将以下代码块直接加入需要解析ini的脚本
 
 ```
-INI_Parser() {
 NAME='_'$2
 SECTION_NUM=$(grep "^\\[" $1 | grep "]$" | wc -l)
 export $NAME'__SECNUM'=$(grep "^\\[" $1 | grep "]$" | wc -l)
@@ -27,6 +26,7 @@ do
     while [[ $KEY_TIMES -le $KEY_NUM ]]
     do
         export $NAME'_'$SECTION_NAME_A'_'"$(cat $1 | sed -n "$STA_LINE,$END_LINE p" | grep -v "^;" | grep -v -e '^$'| grep -n "" | grep "^$KEY_TIMES" | sed "s/^$KEY_TIMES://")"
+        export $NAME'__SEC'$SEC_TIMES'_'"$(cat $1 | sed -n "$STA_LINE,$END_LINE p" | grep -v "^;" | grep -v -e '^$'| grep -n "" | grep "^$KEY_TIMES" | sed "s/^$KEY_TIMES://")"
         let KEY_TIMES=$KEY_TIMES+1
     done
     let SEC_TIMES=$SEC_TIMES+1
@@ -96,6 +96,7 @@ do
     while [[ $KEY_TIMES -le $KEY_NUM ]]
     do
         export $NAME'_'$SECTION_NAME_A'_'"$(cat $1 | sed -n "$STA_LINE,$END_LINE p" | grep -v "^;" | grep -v -e '^$'| grep -n "" | grep "^$KEY_TIMES" | sed "s/^$KEY_TIMES://")"
+        export $NAME'__SEC'$SEC_TIMES'_'"$(cat $1 | sed -n "$STA_LINE,$END_LINE p" | grep -v "^;" | grep -v -e '^$'| grep -n "" | grep "^$KEY_TIMES" | sed "s/^$KEY_TIMES://")"
         let KEY_TIMES=$KEY_TIMES+1
     done
     let SEC_TIMES=$SEC_TIMES+1
