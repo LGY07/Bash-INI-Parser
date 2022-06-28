@@ -56,6 +56,7 @@ KEY=1
 
 `_string__SEC1`:第一个节的名称(若需要不同的节的名称，请将"1"替换为对应节的序数)，example.ini中的值为"SECTION"
 
+`_string__SEC1_KEY`:第一个节中"KEY"键的值，example.ini中的值为"1"
 
 #### 4.一些复杂的示例：
 
@@ -114,6 +115,7 @@ echo $_ABC__SECNUM
 echo $_ABC__SECTIONS
 echo $_ABC__SEC1
 echo $_ABC__SEC2
+echo $_ABC__SEC1_a
 ```
 `输出结果`
 ```
@@ -123,4 +125,5 @@ echo $_ABC__SEC2
 abc1 abc2
 abc1
 abc2
+1
 ```
